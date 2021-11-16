@@ -8,6 +8,12 @@ import {
   ScrollView,
 } from 'react-native';
 import Card from './Card';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  title: PropTypes.string,
+  content: PropTypes.object,
+};
 
 class List extends React.PureComponent {
   render() {
@@ -42,5 +48,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
 });
+
+List.propTypes = propTypes;
 
 export default List;
