@@ -8,12 +8,29 @@ export const getPopularMovies = async () => {
   return response.data.results;
 };
 
+//Get Upcoming Movies
 export const getUpcomingMovies = async () => {
   const response = await axios.get(`${apiUrl}/movie/upcoming?${apiKey}`);
   return response.data.results;
 };
 
+//Get PopularTV
 export const getPopularTv = async () => {
-  const response = await axios.get(`${apiUrl}/tv/upcoming?${apiKey}`);
+  const response = await axios.get(`${apiUrl}/tv/popular?${apiKey}`);
+  return response.data.results;
+};
+
+//Get Family Movie
+export const getFamilyMovie = async () => {
+  const response = await axios.get(
+    `${apiUrl}/discover/movie?${apiKey}&with_genres=10751`,
+  );
+  return response.data.results;
+};
+//Get Comedy Movie
+export const getComedyMovie = async () => {
+  const response = await axios.get(
+    `${apiUrl}/discover/movie?${apiKey}&with_genres=35`,
+  );
   return response.data.results;
 };
