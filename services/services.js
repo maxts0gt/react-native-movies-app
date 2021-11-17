@@ -21,14 +21,14 @@ export const getPopularTv = async () => {
 };
 
 //Get Family Movie
-export const getFamilyMovie = async () => {
+export const getFamilyMovies = async () => {
   const response = await axios.get(
     `${apiUrl}/discover/movie?${apiKey}&with_genres=10751`,
   );
   return response.data.results;
 };
 //Get Comedy Movie
-export const getComedyMovie = async () => {
+export const getComedyMovies = async () => {
   const response = await axios.get(
     `${apiUrl}/discover/movie?${apiKey}&with_genres=35`,
   );

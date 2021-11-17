@@ -1,40 +1,44 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, FlatList} from 'react-native';
+import Card from './Card';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  errorText1: PropTypes.string,
-  errorText2: PropTypes.string,
+  title: PropTypes.string,
+  content: PropTypes.array,
 };
 
-const defaultProps = {
-  errorText1: 'Oops! Something went wrong.',
-  errorText2: 'Make sure you are online and restart the App',
-};
-
-class Error extends React.PureComponent {
+class List extends React.PureComponent {
   render() {
-    const {errorText1, errorText2} = this.props;
+    const {navigation, title, content} = this.props;
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>{errorText1}</Text>
-        <Text style={styles.text}>{errorText2}</Text>
+      <View style={styles.list}>
+        <View>
+          <Text style={styles.text}>{title}</Text>
+        </View>
+        <View>
+          <FlatList
+            data={content}
+            horizontal={true}
+            renderItem={({item}) => (
+              <Card navigation={navigation} item={item} />
+            )}></FlatList>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  list: {
+    marginTop: 25,
   },
   text: {
+    fontSize: 20,
     fontWeight: 'bold',
+    paddingBottom: 20,
   },
 });
 
-Error.propTypes = propTypes;
-Error.defaultProps = defaultProps;
-export default Error;
+List.propTypes = propTypes;
+export default List;
